@@ -1,6 +1,9 @@
 module Bio
   module PL
     module GFF3
+      # Runs the gff3-validate utility with the specified filename
+      # as argument. Returns error messages if the utility found
+      # issues in the file.
       def self.validate_file filename
         if !File.exists?(filename)
           raise Exception.new("No such file - #{filename}")
