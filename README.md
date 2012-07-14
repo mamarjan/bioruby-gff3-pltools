@@ -56,7 +56,7 @@ require the library:
 
 The API docs are online:
 
-  http://mamarjan.github.com/bioruby-gff3-pltools/docs/0.2.0/ruby-api/ 
+  http://mamarjan.github.com/gff3-pltools/docs/0.2.0/ruby-api/ 
 
 For more code examples see the test files in the source tree.
 
@@ -64,7 +64,7 @@ For more code examples see the test files in the source tree.
 
 Project home page can be found at the following location:
 
-  http://mamarjan.github.com/bioruby-gff3-pltools/
+  http://mamarjan.github.com/gff3-pltools/
 
 For information on the source tree, issues and
 how to contribute, see
