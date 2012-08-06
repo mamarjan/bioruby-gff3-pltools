@@ -3,7 +3,7 @@ module Bio
     module GFF3
       # Runs the gff3-ffetch utility with the specified parameters on
       # an external file. Options include :output, :at_most,
-      # :pass_fasta_through, :keep_comments, :keep_pragmas
+      # :keep_fasta, :keep_comments, :keep_pragmas
       def self.filter_file filename, filter_string, options = {}
         if !File.exists?(filename)
           raise Exception.new("No such file - #{filename}")
@@ -17,8 +17,8 @@ module Bio
         if !options[:at_most].nil?
           at_most_option = "--at-most #{options[:at_most]}"
         end
-        if options[:pass_fasta_through]
-          fasta_option = "--pass-fasta-through"
+        if options[:keep_fasta]
+          fasta_option = "--keep-fasta"
         end
         if options[:keep_comments]
           comments_option = "--keep-comments"
@@ -36,7 +36,7 @@ module Bio
 
       # Runs the gff3-ffetch utility with the specified parameters while
       # passing data to its stdin. Options include :output and :at_most,
-      # :pass_fasta_through, :keep_comments, :keep_pragmas
+      # :keep_fasta, :keep_comments, :keep_pragmas
       def self.filter_data data, filter_string, options = {}
         output_option = nil
         output = nil
@@ -46,8 +46,8 @@ module Bio
         if !options[:at_most].nil?
           at_most_option = "--at-most #{options[:at_most]}"
         end
-        if options[:pass_fasta_through]
-          fasta_option = "--pass-fasta-through"
+        if options[:keep_fasta]
+          fasta_option = "--keep-fasta"
         end
         if options[:keep_comments]
           comments_option = "--keep-comments"
