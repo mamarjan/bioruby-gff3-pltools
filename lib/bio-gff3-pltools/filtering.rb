@@ -4,7 +4,7 @@ module Bio
       # Runs the gff3-ffetch utility with the specified parameters on
       # an external file. Options include :output, :at_most,
       # :keep_fasta, :keep_comments, :keep_pragmas, :gtf_output,
-      # :json_output
+      # :json_output, :select
       def self.filter_file filename, filter_string, options = {}
         if !File.exists?(filename)
           raise Exception.new("No such file - #{filename}")
@@ -33,7 +33,10 @@ module Bio
         if options[:json_output]
           json_output_option = "--json"
         end
-        gff3_ffetch = IO.popen("gff3-ffetch --filter #{filter_string} #{filename} #{output_option} #{at_most_option} #{fasta_option} #{comments_option} #{pragmas_option} #{gtf_output_option} #{json_output_option}")
+        if !options[:select].nil?
+          select_option = "--select \"#{options[:select]}\""
+        end
+        gff3_ffetch = IO.popen("gff3-ffetch --filter #{filter_string} #{filename} #{output_option} #{at_most_option} #{fasta_option} #{comments_option} #{pragmas_option} #{gtf_output_option} #{json_output_option} #{select_option}")
         if output_option.nil?
           output = gff3_ffetch.read
         end
@@ -44,7 +47,7 @@ module Bio
       # Runs the gff3-ffetch utility with the specified parameters while
       # passing data to its stdin. Options include :output and :at_most,
       # :keep_fasta, :keep_comments, :keep_pragmas, :gtf_output,
-      # :json_output
+      # :json_output, :select
       def self.filter_data data, filter_string, options = {}
         output_option = nil
         output = nil
@@ -69,7 +72,10 @@ module Bio
         if options[:json_output]
           json_output_option = "--json"
         end
-        gff3_ffetch = IO.popen("gff3-ffetch --filter #{filter_string} - #{output_option} #{at_most_option} #{fasta_option} #{comments_option} #{pragmas_option} #{gtf_output_option} #{json_output_option}", "r+")
+        if !options[:select].nil?
+          select_option = "--select \"#{options[:select]}\""
+        end
+        gff3_ffetch = IO.popen("gff3-ffetch --filter #{filter_string} - #{output_option} #{at_most_option} #{fasta_option} #{comments_option} #{pragmas_option} #{gtf_output_option} #{json_output_option} #{select_option}", "r+")
         gff3_ffetch.write data
         gff3_ffetch.close_write
         if output_option.nil?
