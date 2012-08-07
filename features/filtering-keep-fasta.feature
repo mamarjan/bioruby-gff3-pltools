@@ -7,7 +7,7 @@ Feature: Rataining FASTA data in the output of gff3-ffetch tool
     Given I have a GFF3 file with FASTA data in it
     When I set up the filter to leave only records with a particular ID
     And set the output to be a string
-    And set the pass_through_fasta option to true
+    And set the keep-fasta option to true
     And run the filter
     Then I should find a line with "##FASTA" in the output
     And there should be more lines after that
@@ -27,7 +27,7 @@ Feature: Rataining FASTA data in the output of gff3-ffetch tool
       """
     When I set up the filter to leave only records with a particular ID
     And set the output to be a string
-    And set the pass_through_fasta option to true
+    And set the keep-fasta option to true
     And run the function for filtering data
     Then I should find a line with "##FASTA" in the output
     And there should be more lines after that

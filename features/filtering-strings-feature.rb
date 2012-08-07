@@ -6,7 +6,7 @@ When /^run the function for filtering data$/ do
   @result = Bio::PL::GFF3::filter_data @gff3_data, @filter_string,
                                        output: @output_filename,
                                        at_most: @at_most,
-                                       pass_fasta_through: @pass_fasta_through,
+                                       keep_fasta: @keep_fasta,
                                        keep_comments: @keep_comments,
                                        keep_pragmas: @keep_pragmas
 end

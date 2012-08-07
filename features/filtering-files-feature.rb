@@ -17,7 +17,7 @@ When /^run the filter$/ do
   @result = Bio::PL::GFF3.filter_file @filename, @filter_string,
                                       output: @output_filename,
                                       at_most: @at_most,
-                                      pass_fasta_through: @pass_fasta_through,
+                                      keep_fasta: @keep_fasta,
                                       keep_comments: @keep_comments,
                                       keep_pragmas: @keep_pragmas
 end

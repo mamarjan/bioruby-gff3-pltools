@@ -4,8 +4,8 @@ Given /^I have a GFF3 file with FASTA data in it$/ do
   File.exists?(@filename).should be_true
 end
 
-When /^set the pass_through_fasta option to true$/ do
-  @pass_fasta_through = true
+When /^set the keep-fasta option to true$/ do
+  @keep_fasta = true
 end
 
 Then /^I should find a line with "(.*?)" in the output$/ do |fasta_header|
